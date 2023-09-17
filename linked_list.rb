@@ -15,7 +15,7 @@ class LinkedList
     def stringify_list
         string = ""
         current = @head_node
-        while !current.nil?
+        until current.nil? 
             if current.value != nil
                 string += (current.value).to_s + "; "
             end
@@ -37,18 +37,12 @@ class LinkedList
             return
         end
 
-        while !node1.nil?
-            if node1.value == val1
-                break
-            end
+        until node1.nil? || node1.value == val1 
             node1_prev = node1
             node1 = node1.next_node
         end
 
-        while !node2.nil?
-            if node2.value == val2
-                break
-            end
+        until node2.nil? || node2.value == val2
             node2_prev = node2
             node2 = node2.next_node
         end
@@ -70,9 +64,7 @@ class LinkedList
             node2_prev.next_node = node1
         end
 
-        temp = node1.next_node
-        node1.next_node = node2.next_node
-        node2.next_node = temp
+        node1.next_node, node2.next_node = node2.next_node, node1.next_node
     end
 end
 
